@@ -10,6 +10,38 @@ function showDebug(message) {
     }
 }
 
+function showError(message) {
+    const errorDiv = document.getElementById('errorOutput');
+    if (errorDiv) {
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 5000);
+    }
+}
+
+function showWarning(message, onConfirm) {
+    const warningDiv = document.getElementById('warningOutput');
+    const warningText = document.getElementById('warningText');
+    const confirmBtn = document.getElementById('warningConfirm');
+    const cancelBtn = document.getElementById('warningCancel');
+    
+    if (warningDiv && warningText) {
+        warningText.textContent = message;
+        warningDiv.style.display = 'block';
+        
+        confirmBtn.onclick = () => {
+            warningDiv.style.display = 'none';
+            onConfirm();
+        };
+        
+        cancelBtn.onclick = () => {
+            warningDiv.style.display = 'none';
+        };
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     showDebug('✓ JavaScript loaded successfully');
     
@@ -44,6 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function calculateSoH() {
+        // Hide previous errors
+        const errorDiv = document.getElementById('errorOutput');
+        if (errorDiv) errorDiv.style.display = 'none';
+        
         // Get input values
         const deliveryCapacity = parseFloat(deliveryCapacityInput.value);
         const tripDistance = parseFloat(tripDistanceInput.value);
@@ -53,32 +89,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Validate inputs
         if (!deliveryCapacity || !tripDistance || !avgConsumption || !socStart || !socEnd) {
-            alert('Bitte alle Felder ausfüllen');
+            showError('Bitte alle Felder ausfüllen');
             return;
         }
 
         if (deliveryCapacity <= 0) {
-            alert('Auslieferungskapazität muss größer als 0 sein');
+            showError('Auslieferungskapazität muss größer als 0 sein');
             return;
         }
 
         if (tripDistance <= 0) {
-            alert('Fahrtlänge muss größer als 0 sein');
+            showError('Fahrtlänge muss größer als 0 sein');
             return;
         }
 
         if (avgConsumption <= 0) {
-            alert('Durchschnittsverbrauch muss größer als 0 sein');
+            showError('Durchschnittsverbrauch muss größer als 0 sein');
             return;
         }
 
         if (socStart < 0 || socStart > 100 || socEnd < 0 || socEnd > 100) {
-            alert('SoC-Werte müssen zwischen 0 und 100% liegen');
+            showError('SoC-Werte müssen zwischen 0 und 100% liegen');
             return;
         }
 
         if (socStart <= socEnd) {
-            alert('SoC Start muss größer sein als SoC Ende');
+            showError('SoC Start muss größer sein als SoC Ende');
             return;
         }
 
@@ -87,11 +123,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Warn if SoC difference is too small for accurate measurement
         if (socDifference < 20) {
-            if (!confirm('Die SoC-Differenz ist kleiner als 20%. Dies kann zu ungenauen Ergebnissen führen. Trotzdem fortfahren?')) {
-                return;
-            }
+            showWarning('Die SoC-Differenz ist kleiner als 20%. Dies kann zu ungenauen Ergebnissen führen. Trotzdem fortfahren?', () => {
+                performCalculation(deliveryCapacity, tripDistance, avgConsumption, socDifference);
+            });
+            return;
         }
 
+        performCalculation(deliveryCapacity, tripDistance, avgConsumption, socDifference);
+    }
+
+    function performCalculation(deliveryCapacity, tripDistance, avgConsumption, socDifference) {
         // Step 1: Calculate consumed energy
         // Energy = Distance (km) × Consumption (kWh/100km) / 100
         const consumedEnergy = (tripDistance * avgConsumption) / 100;
