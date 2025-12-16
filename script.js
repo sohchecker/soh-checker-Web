@@ -1,21 +1,39 @@
 // SoH Calculation Logic (from the SoH Checker App)
 // Detailed calculation based on consumption trip data
 
+// Debug helper
+function showDebug(message) {
+const debugDiv = document.getElementById(‘debugOutput’);
+if (debugDiv) {
+debugDiv.innerHTML += message + ‘<br>’;
+debugDiv.style.display = ‘block’;
+}
+}
+
 document.addEventListener(‘DOMContentLoaded’, function() {
-const calculateBtn = document.getElementById(‘calculateBtn’);
-const deliveryCapacityInput = document.getElementById(‘deliveryCapacity’);
-const tripDistanceInput = document.getElementById(‘tripDistance’);
-const avgConsumptionInput = document.getElementById(‘avgConsumption’);
-const socStartInput = document.getElementById(‘socStart’);
-const socEndInput = document.getElementById(‘socEnd’);
-const resultDiv = document.getElementById(‘result’);
-const sohValueSpan = document.getElementById(‘sohValue’);
-const statusTextDiv = document.getElementById(‘statusText’);
-const currentCapacityDiv = document.getElementById(‘currentCapacity’);
+showDebug(‘✓ JavaScript loaded successfully’);
 
 ```
+const calculateBtn = document.getElementById('calculateBtn');
+const deliveryCapacityInput = document.getElementById('deliveryCapacity');
+const tripDistanceInput = document.getElementById('tripDistance');
+const avgConsumptionInput = document.getElementById('avgConsumption');
+const socStartInput = document.getElementById('socStart');
+const socEndInput = document.getElementById('socEnd');
+const resultDiv = document.getElementById('result');
+const sohValueSpan = document.getElementById('sohValue');
+const statusTextDiv = document.getElementById('statusText');
+const currentCapacityDiv = document.getElementById('currentCapacity');
+
+showDebug('✓ All elements found');
+
 // Calculate button click handler
-calculateBtn.addEventListener('click', calculateSoH);
+calculateBtn.addEventListener('click', function() {
+    showDebug('Button clicked!');
+    calculateSoH();
+});
+
+showDebug('✓ Event listener attached');
 
 // Allow Enter key to trigger calculation
 [deliveryCapacityInput, tripDistanceInput, avgConsumptionInput, socStartInput, socEndInput].forEach(input => {
