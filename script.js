@@ -1,14 +1,8 @@
 // SoH Calculation Logic (from the SoH Checker App)
 // Detailed calculation based on consumption trip data
 
-// Debug helper
-function showDebug(message) {
-    const debugDiv = document.getElementById('debugOutput');
-    if (debugDiv) {
-        debugDiv.innerHTML += message + '<br>';
-        debugDiv.style.display = 'block';
-    }
-}
+// SoH Calculation Logic (from the SoH Checker App)
+// Detailed calculation based on consumption trip data
 
 function showError(message) {
     const errorDiv = document.getElementById('errorOutput');
@@ -43,8 +37,6 @@ function showWarning(message, onConfirm) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    showDebug('✓ JavaScript loaded successfully');
-    
     const calculateBtn = document.getElementById('calculateBtn');
     const deliveryCapacityInput = document.getElementById('deliveryCapacity');
     const tripDistanceInput = document.getElementById('tripDistance');
@@ -56,15 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const statusTextDiv = document.getElementById('statusText');
     const currentCapacityDiv = document.getElementById('currentCapacity');
 
-    showDebug('✓ All elements found');
-
     // Calculate button click handler
-    calculateBtn.addEventListener('click', function() {
-        showDebug('Button clicked!');
-        calculateSoH();
-    });
-    
-    showDebug('✓ Event listener attached');
+    calculateBtn.addEventListener('click', calculateSoH);
 
     // Allow Enter key to trigger calculation
     [deliveryCapacityInput, tripDistanceInput, avgConsumptionInput, socStartInput, socEndInput].forEach(input => {
@@ -200,7 +185,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function trackCalculation(soh, capacity) {
         // Placeholder for analytics tracking
         // You can add Google Analytics or similar here
-        console.log('SoH calculated:', soh, '%, Current capacity:', capacity, 'kWh');
     }
 
     // Add smooth scroll for anchor links
