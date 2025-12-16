@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -18,201 +17,198 @@
         </div>
     </header>
 
-```
-<main>
-    <section class="hero">
-        <div class="container">
-            <h2>Wie gesund ist deine E-Auto Batterie?</h2>
-            <p class="subtitle">Berechne den State of Health (SoH) deiner Batterie in Sekunden</p>
-        </div>
-    </section>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Wie gesund ist deine E-Auto Batterie?</h2>
+                <p class="subtitle">Berechne den State of Health (SoH) deiner Batterie in Sekunden</p>
+            </div>
+        </section>
 
-    <section class="calculator">
-        <div class="container">
-            <div class="calculator-card">
-                <h3>SoH jetzt berechnen</h3>
-                
-                <div class="input-group">
-                    <label for="deliveryCapacity">Auslieferungskapazität (Netto)</label>
-                    <div class="input-with-unit">
-                        <input type="number" id="deliveryCapacity" placeholder="z.B. 64" step="0.1" min="0">
-                        <span class="unit-label">kWh</span>
-                    </div>
-                    <small class="field-hint">Die Nettokapazität laut Hersteller</small>
-                </div>
-
-                <div class="section-divider">
-                    <span>Daten deiner Verbrauchsfahrt</span>
-                </div>
-
-                <div class="input-group">
-                    <label for="tripDistance">Länge der Fahrt</label>
-                    <div class="input-with-unit">
-                        <input type="number" id="tripDistance" placeholder="z.B. 150" step="0.1" min="0">
-                        <span class="unit-label">km</span>
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label for="avgConsumption">Durchschnittsverbrauch</label>
-                    <div class="input-with-unit">
-                        <input type="number" id="avgConsumption" placeholder="z.B. 18.5" step="0.1" min="0">
-                        <span class="unit-label">kWh/100km</span>
-                    </div>
-                    <small class="field-hint">Aus dem Bordcomputer</small>
-                </div>
-
-                <div class="input-row">
-                    <div class="input-group">
-                        <label for="socStart">SoC Start</label>
-                        <div class="input-with-unit">
-                            <input type="number" id="socStart" placeholder="z.B. 90" step="1" min="0" max="100">
-                            <span class="unit-label">%</span>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="socEnd">SoC Ende</label>
-                        <div class="input-with-unit">
-                            <input type="number" id="socEnd" placeholder="z.B. 45" step="1" min="0" max="100">
-                            <span class="unit-label">%</span>
-                        </div>
-                    </div>
-                </div>
-
-                <button id="calculateBtn" class="btn-primary">SoH berechnen</button>
-
-                <div id="debugOutput" style="display:none; margin-top:20px; padding:15px; background:#f0f0f0; border-radius:8px; font-family:monospace; font-size:12px; color:#333;"></div>
-
-                <div id="result" class="result hidden">
-                    <div class="result-detail">
-                        <div class="detail-label">Berechnete aktuelle Kapazität</div>
-                        <div class="detail-value" id="currentCapacity">--</div>
-                    </div>
+        <section class="calculator">
+            <div class="container">
+                <div class="calculator-card">
+                    <h3>SoH jetzt berechnen</h3>
                     
-                    <div class="result-value">
-                        <span class="soh-percentage" id="sohValue">--</span>
-                        <span class="soh-label">State of Health</span>
+                    <div class="input-group">
+                        <label for="deliveryCapacity">Auslieferungskapazität (Netto)</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="deliveryCapacity" placeholder="z.B. 64" step="0.1" min="0">
+                            <span class="unit-label">kWh</span>
+                        </div>
+                        <small class="field-hint">Die Nettokapazität laut Hersteller</small>
                     </div>
-                    <div class="result-status" id="statusText">--</div>
-                    <div class="result-info">
-                        <small>💡 Deine Daten werden nicht gespeichert</small>
+
+                    <div class="section-divider">
+                        <span>Daten deiner Verbrauchsfahrt</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="tripDistance">Länge der Fahrt</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="tripDistance" placeholder="z.B. 150" step="0.1" min="0">
+                            <span class="unit-label">km</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="avgConsumption">Durchschnittsverbrauch</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="avgConsumption" placeholder="z.B. 18.5" step="0.1" min="0">
+                            <span class="unit-label">kWh/100km</span>
+                        </div>
+                        <small class="field-hint">Aus dem Bordcomputer</small>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="socStart">SoC Start</label>
+                            <div class="input-with-unit">
+                                <input type="number" id="socStart" placeholder="z.B. 90" step="1" min="0" max="100">
+                                <span class="unit-label">%</span>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="socEnd">SoC Ende</label>
+                            <div class="input-with-unit">
+                                <input type="number" id="socEnd" placeholder="z.B. 45" step="1" min="0" max="100">
+                                <span class="unit-label">%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="calculateBtn" class="btn-primary">SoH berechnen</button>
+
+                    <div id="debugOutput" style="display:none; margin-top:20px; padding:15px; background:#f0f0f0; border-radius:8px; font-family:monospace; font-size:12px; color:#333;"></div>
+
+                    <div id="result" class="result hidden">
+                        <div class="result-detail">
+                            <div class="detail-label">Berechnete aktuelle Kapazität</div>
+                            <div class="detail-value" id="currentCapacity">--</div>
+                        </div>
+                        
+                        <div class="result-value">
+                            <span class="soh-percentage" id="sohValue">--</span>
+                            <span class="soh-label">State of Health</span>
+                        </div>
+                        <div class="result-status" id="statusText">--</div>
+                        <div class="result-info">
+                            <small>💡 Deine Daten werden nicht gespeichert</small>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="info-box">
-                <h4>Wie funktioniert die Berechnung?</h4>
-                <p><strong>Schritt 1:</strong> Aus deinen Verbrauchsdaten wird die aktuelle Kapazität deiner Batterie berechnet. Dazu wird die verbrauchte Energie (Strecke × Verbrauch) mit der SoC-Differenz ins Verhältnis gesetzt.</p>
-                <p><strong>Schritt 2:</strong> Der SoH gibt an, wie viel Kapazität deine Batterie im Vergleich zum Neuzustand noch hat. Ein SoH von 100% bedeutet, die Batterie ist wie neu.</p>
-                <p><strong>Tipp:</strong> Für eine genaue Messung sollte die Fahrt möglichst lang sein (mindestens 50 km) und der SoC-Unterschied deutlich (mindestens 30%).</p>
+                <div class="info-box">
+                    <h4>Wie funktioniert die Berechnung?</h4>
+                    <p><strong>Schritt 1:</strong> Aus deinen Verbrauchsdaten wird die aktuelle Kapazität deiner Batterie berechnet. Dazu wird die verbrauchte Energie (Strecke × Verbrauch) mit der SoC-Differenz ins Verhältnis gesetzt.</p>
+                    <p><strong>Schritt 2:</strong> Der SoH gibt an, wie viel Kapazität deine Batterie im Vergleich zum Neuzustand noch hat. Ein SoH von 100% bedeutet, die Batterie ist wie neu.</p>
+                    <p><strong>Tipp:</strong> Für eine genaue Messung sollte die Fahrt möglichst lang sein (mindestens 50 km) und der SoC-Unterschied deutlich (mindestens 30%).</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="app-promotion">
+        <section class="app-promotion">
+            <div class="container">
+                <h2>Noch mehr mit der SoH Checker App</h2>
+                <p class="section-subtitle">Die kostenlose App bietet dir erweiterte Funktionen</p>
+
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">📊</div>
+                        <h3>Verlaufs-Charts</h3>
+                        <p>Verfolge die Entwicklung deiner Batterie über die Zeit</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🚗</div>
+                        <h3>Mehrere Fahrzeuge</h3>
+                        <p>Verwalte beliebig viele E-Autos in einer App</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">💾</div>
+                        <h3>Messungen speichern</h3>
+                        <p>Alle deine Messungen werden automatisch gespeichert</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📄</div>
+                        <h3>PDF Export</h3>
+                        <p>Exportiere Berichte für Versicherung oder Verkauf</p>
+                    </div>
+                </div>
+
+                <div class="app-screenshots">
+                    <div class="screenshot-placeholder">
+                        <p>📱 Screenshot 1</p>
+                    </div>
+                    <div class="screenshot-placeholder">
+                        <p>📱 Screenshot 2</p>
+                    </div>
+                    <div class="screenshot-placeholder">
+                        <p>📱 Screenshot 3</p>
+                    </div>
+                </div>
+
+                <div class="download-buttons">
+                    <a href="https://apps.apple.com/app/soh-checker/id6738303773" class="btn-store" target="_blank">
+                        <span class="store-icon">🍎</span>
+                        <div class="store-text">
+                            <small>Download on the</small>
+                            <strong>App Store</strong>
+                        </div>
+                    </a>
+                    <a href="#" class="btn-store btn-store-disabled">
+                        <span class="store-icon">🤖</span>
+                        <div class="store-text">
+                            <small>Bald verfügbar auf</small>
+                            <strong>Google Play</strong>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="premium-badge">
+                    <h4>🌟 Premium Features</h4>
+                    <ul>
+                        <li>Unbegrenzte Fahrzeuge & Messungen</li>
+                        <li>Detaillierte Trend-Analysen</li>
+                        <li>PDF-Export für alle Berichte</li>
+                        <li>Werbefreie Nutzung</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <div class="container">
+                <h2>Häufige Fragen</h2>
+                
+                <div class="faq-item">
+                    <h4>Wo finde ich die benötigten Werte?</h4>
+                    <p>Die Auslieferungskapazität findest du in der Betriebsanleitung deines E-Autos. Länge, Durchschnittsverbrauch und SoC-Werte zeigt dir der Bordcomputer während und nach der Fahrt an.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Ab wann ist der SoH bedenklich?</h4>
+                    <p>Die meisten Hersteller garantieren mindestens 70-80% SoH über 8 Jahre. Unter 80% solltest du die Entwicklung im Auge behalten, unter 70% wird eine Prüfung empfohlen.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Ist die App wirklich kostenlos?</h4>
+                    <p>Ja! Die Basis-Version ist komplett kostenlos. Premium-Features für Power-User sind optional verfügbar.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
         <div class="container">
-            <h2>Noch mehr mit der SoH Checker App</h2>
-            <p class="section-subtitle">Die kostenlose App bietet dir erweiterte Funktionen</p>
-
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">📊</div>
-                    <h3>Verlaufs-Charts</h3>
-                    <p>Verfolge die Entwicklung deiner Batterie über die Zeit</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🚗</div>
-                    <h3>Mehrere Fahrzeuge</h3>
-                    <p>Verwalte beliebig viele E-Autos in einer App</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">💾</div>
-                    <h3>Messungen speichern</h3>
-                    <p>Alle deine Messungen werden automatisch gespeichert</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">📄</div>
-                    <h3>PDF Export</h3>
-                    <p>Exportiere Berichte für Versicherung oder Verkauf</p>
-                </div>
-            </div>
-
-            <div class="app-screenshots">
-                <div class="screenshot-placeholder">
-                    <p>📱 Screenshot 1</p>
-                </div>
-                <div class="screenshot-placeholder">
-                    <p>📱 Screenshot 2</p>
-                </div>
-                <div class="screenshot-placeholder">
-                    <p>📱 Screenshot 3</p>
-                </div>
-            </div>
-
-            <div class="download-buttons">
-                <a href="https://apps.apple.com/app/soh-checker/id6738303773" class="btn-store" target="_blank">
-                    <span class="store-icon">🍎</span>
-                    <div class="store-text">
-                        <small>Download on the</small>
-                        <strong>App Store</strong>
-                    </div>
-                </a>
-                <a href="#" class="btn-store btn-store-disabled">
-                    <span class="store-icon">🤖</span>
-                    <div class="store-text">
-                        <small>Bald verfügbar auf</small>
-                        <strong>Google Play</strong>
-                    </div>
-                </a>
-            </div>
-
-            <div class="premium-badge">
-                <h4>🌟 Premium Features</h4>
-                <ul>
-                    <li>Unbegrenzte Fahrzeuge & Messungen</li>
-                    <li>Detaillierte Trend-Analysen</li>
-                    <li>PDF-Export für alle Berichte</li>
-                    <li>Werbefreie Nutzung</li>
-                </ul>
+            <p>&copy; 2024 SoH Checker. Made with ⚡ for E-Mobility.</p>
+            <div class="footer-links">
+                <a href="#privacy">Datenschutz</a>
+                <a href="#imprint">Impressum</a>
             </div>
         </div>
-    </section>
+    </footer>
 
-    <section class="faq">
-        <div class="container">
-            <h2>Häufige Fragen</h2>
-            
-            <div class="faq-item">
-                <h4>Wo finde ich die benötigten Werte?</h4>
-                <p>Die Auslieferungskapazität findest du in der Betriebsanleitung deines E-Autos. Länge, Durchschnittsverbrauch und SoC-Werte zeigt dir der Bordcomputer während und nach der Fahrt an.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>Ab wann ist der SoH bedenklich?</h4>
-                <p>Die meisten Hersteller garantieren mindestens 70-80% SoH über 8 Jahre. Unter 80% solltest du die Entwicklung im Auge behalten, unter 70% wird eine Prüfung empfohlen.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>Ist die App wirklich kostenlos?</h4>
-                <p>Ja! Die Basis-Version ist komplett kostenlos. Premium-Features für Power-User sind optional verfügbar.</p>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer>
-    <div class="container">
-        <p>&copy; 2024 SoH Checker. Made with ⚡ for E-Mobility.</p>
-        <div class="footer-links">
-            <a href="#privacy">Datenschutz</a>
-            <a href="#imprint">Impressum</a>
-        </div>
-    </div>
-</footer>
-
-<script src="script.js"></script>
-```
-
+    <script src="script.js"></script>
 </body>
 </html>
