@@ -13,16 +13,6 @@
     --shadow-hover: 0 4px 16px rgba(0,0,0,0.15);
 }
 
-.logopict {
-  width: 180px;              /* Logo-Größe */
-  height: auto;              /* Seitenverhältnis beibehalten */
-  padding: 10px;             /* Abstand zum Rahmen */
-  border: 1px solid #ccc;    /* Rahmen */
-  border-radius: 8px;        /* abgerundete Ecken */
-  background-color: white;  /* wichtig bei transparentem PNG */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25); /* Schatten */
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -53,6 +43,13 @@ header {
 .logo h1 {
     font-size: 2rem;
     margin-bottom: 5px;
+  	width: 180px;              /* Logo-Größe */
+  	height: auto;              /* Seitenverhältnis beibehalten */
+  	padding: 10px;             /* Abstand zum Rahmen */
+  	border: 1px solid #ccc;    /* Rahmen */
+  	border-radius: 8px;        /* abgerundete Ecken */
+  	background-color: white;  /* wichtig bei transparentem PNG */
+  	box-shadow: 0 4px 10px rgba(0,0,0,0.25); /* Schatten */
 }
 
 .tagline {
