@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #ffd668;
-    --secondary-color: #ffb249;
+    --secondary-color: #ffd668;
+    --primary-color: #ffb249;
     --danger-color: #f44336;
     --warning-color: #ff9800;
     --success-color: #4CAF50;
@@ -35,7 +35,7 @@ body {
 /* Header */
 header {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
+    color: black;
     padding: 20px 0;
     box-shadow: var(--shadow);
 }
@@ -79,7 +79,7 @@ header {
     padding: 40px;
     box-shadow: var(--shadow);
     max-width: 600px;
-    margin: 0 auto 30px;
+    margin: 0 auto 30px ;
 }
 
 .calculator-card h3 {
